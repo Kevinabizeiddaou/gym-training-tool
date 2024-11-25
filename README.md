@@ -1,7 +1,3 @@
-Here is the complete text in one section for you to copy:
-
----
-
 # AI Gym Trainer
 
 An AI-powered gym trainer that monitors users' exercise form, counts repetitions, and provides real-time feedback to improve workout quality and safety.
