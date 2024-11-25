@@ -1,45 +1,29 @@
 import cv2
 import mediapipe as mp
 
-# Initialize Mediapipe Pose and Drawing utilities
-mp_pose = mp.solutions.pose
-mp_drawing = mp.solutions.drawing_utils
+class PoseDetector:
+    def __init__(self, detection_confidence=0.5, tracking_confidence=0.5):
+        self.mp_pose = mp.solutions.pose
+        self.mp_drawing = mp.solutions.drawing_utils
+        self.pose = self.mp_pose.Pose(min_detection_confidence=detection_confidence,
+                                      min_tracking_confidence=tracking_confidence)
 
-# Initialize Webcam
-cap = cv2.VideoCapture(0)
+    def detect_pose(self, frame):
+        """Detect pose landmarks in the given frame."""
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = self.pose.process(rgb_frame)
+        return results
 
-# Initialize Pose Detector
-with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
-    while cap.isOpened():
-        ret, frame = cap.read()
-        if not ret:
-            print("Unable to read from webcam. Exiting...")
-            break
-
-        # Convert the BGR frame to RGB
-        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        image.flags.writeable = False
-
-        # Detect pose
-        results = pose.process(image)
-
-        # Draw pose landmarks on the frame
-        image.flags.writeable = True
-        image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+    def draw_landmarks(self, frame, results):
+        """Draw pose landmarks on the given frame."""
         if results.pose_landmarks:
-            mp_drawing.draw_landmarks(
-                image, 
+            self.mp_drawing.draw_landmarks(
+                frame, 
                 results.pose_landmarks, 
-                mp_pose.POSE_CONNECTIONS
+                self.mp_pose.POSE_CONNECTIONS
             )
+        return frame
 
-        # Display the frame
-        cv2.imshow('Pose Detection', image)
-
-        # Break the loop on 'q' key press
-        if cv2.waitKey(10) & 0xFF == ord('q'):
-            break
-
-# Release resources
-cap.release()
-cv2.destroyAllWindows()
+    def close(self):
+        """Release pose detector resources."""
+        self.pose.close()
