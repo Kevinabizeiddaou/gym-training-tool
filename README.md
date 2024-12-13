@@ -10,39 +10,31 @@ An AI-powered gym trainer that monitors users' exercise form, counts repetitions
 - **Interactive Feedback**: Alerts users about common mistakes in form (e.g., arching back during push-ups).
 
 ## Technologies Used
-- **Programming Languages**: Python, JavaScript
+- **Programming Languages**: Python
 - **Pose Estimation**: Mediapipe
-- **Machine Learning Models**: CNNs and RNNs for form evaluation and repetition counting
-- **Data**: COCO, MPII, and custom exercise datasets
-- **Frontend**: ReactJS (optional for UI development)
+- **Machine Learning Models**: CNNs and Random Forest Classifiers for form evaluation and repetition counting
+- **Data**: COCO, and custom exercise datasets
 - **Backend**: Flask/Django for server-side processing
 
 ## How to Run
 ### Prerequisites
 - Python 3.8+
 - Git
-- Node.js (if working with ReactJS frontend)
+
 
 ### Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/ai-gym-trainer.git
-   cd ai-gym-trainer
+   git clone https://github.com/Kevinabizeiddaou/gym-training-tool.git
+   cd gym-training-tool
    ```
 2. Install Python dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-3. Run the backend server:
-   ```bash
-   python app.py
-   ```
-4. *(Optional)* Start the ReactJS frontend:
-   ```bash
-   cd frontend
-   npm install
-   npm start
-   ```
+3. Run the models to train them, then test.
+  
+
 
 ## Project Workflow
 1. **Pose Detection**: Mediapipe extracts pose landmarks from webcam/video.
@@ -54,40 +46,19 @@ An AI-powered gym trainer that monitors users' exercise form, counts repetitions
 ```bash
 ai-gym-trainer/
 ├── backend/                  # Backend server files
-│   ├── app.py                # Main Flask/Django app file
+│   ├── models                # Main python files
 │   ├── routes/               # API endpoints
 │   ├── models/               # Machine learning models
 │   ├── utils/                # Utility scripts
 ├── data/                     # Datasets for training and testing
 │   ├── raw/                  # Raw datasets
 │   ├── processed/            # Processed datasets
-├── frontend/                 # ReactJS frontend application
-│   ├── src/                  # Source code
-│   ├── public/               # Public assets
 ├── models/                   # Pre-trained and custom models
 │   ├── form_evaluation/      # CNN models
-│   ├── repetition_counting/  # RNN models
+│   ├── repetition_counting/  # Random Forest Classifiers
 ├── README.md                 # Project documentation
 ├── requirements.txt          # Python dependencies
-├── LICENSE                   # Project license
 ```
-
-## Contributing
-Contributions are welcome! Here’s how you can contribute:
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add feature-name"
-   ```
-4. Push to your branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request.
 
 ## Future Enhancements
 - Multi-language support.
@@ -100,5 +71,4 @@ Contributions are welcome! Here’s how you can contribute:
 - **COCO Dataset** for training data.
 - **Onyx Fitness** for inspiration.
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
