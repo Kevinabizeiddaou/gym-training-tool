@@ -33,15 +33,19 @@ An AI-powered gym trainer that monitors users' exercise form, counts repetitions
    ```
 3. Run the models to train them, then test.
    ```bash
-   python 
+   python train_state_model.py
    ```
    To train the state model on Up and Down states for repetition counting.
+
+   
    ```bash
-   python 
+   python train_form_model.py
    ```
    To train the form model on Good and Bad form pushups for form evaluation
+
+   
    ```bash
-   python 
+   python test_combined.py
    ```
    The main code to open the webcam and test your pushups accurately
 
