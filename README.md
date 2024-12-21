@@ -13,8 +13,7 @@ An AI-powered gym trainer that monitors users' exercise form, counts repetitions
 - **Programming Languages**: Python
 - **Pose Estimation**: Mediapipe
 - **Machine Learning Models**: CNNs and Random Forest Classifiers for form evaluation and repetition counting
-- **Data**: COCO, and custom exercise datasets
-- **Backend**: Flask/Django for server-side processing
+- **Data**: Custom exercise datasets
 
 ## How to Run
 ### Prerequisites
@@ -33,29 +32,34 @@ An AI-powered gym trainer that monitors users' exercise form, counts repetitions
    pip install -r requirements.txt
    ```
 3. Run the models to train them, then test.
-  
-
+   ```bash
+   python 
+   ```
+   To train the state model on Up and Down states for repetition counting.
+   ```bash
+   python 
+   ```
+   To train the form model on Good and Bad form pushups for form evaluation
+   ```bash
+   python 
+   ```
+   The main code to open the webcam and test your pushups accurately
 
 ## Project Workflow
 1. **Pose Detection**: Mediapipe extracts pose landmarks from webcam/video.
 2. **Repetition Counting**: Detects complete exercise cycles.
-3. **Form Evaluation**: Scores repetitions using a trained CNN model.
+3. **Form Evaluation**: Scores repetitions as "Good" or "Fix Form" using a trained RandomForest model.
 4. **Feedback Loop**: Provides real-time alerts for posture corrections.
 
 ## Folder Structure
 ```bash
 ai-gym-trainer/
-├── backend/                  # Backend server files
-│   ├── models                # Main python files
-│   ├── routes/               # API endpoints
-│   ├── models/               # Machine learning models
-│   ├── utils/                # Utility scripts
+├── models/                   
+│   ├── form_evaluation/      # Random Forest Classifier
+│   ├── repetition_counting/  # Random Forest Classifier
 ├── data/                     # Datasets for training and testing
 │   ├── raw/                  # Raw datasets
 │   ├── processed/            # Processed datasets
-├── models/                   # Pre-trained and custom models
-│   ├── form_evaluation/      # CNN models
-│   ├── repetition_counting/  # Random Forest Classifiers
 ├── README.md                 # Project documentation
 ├── requirements.txt          # Python dependencies
 ```
@@ -68,7 +72,6 @@ ai-gym-trainer/
 
 ## Acknowledgments
 - **Mediapipe** for pose detection.
-- **COCO Dataset** for training data.
 - **Onyx Fitness** for inspiration.
 
 
