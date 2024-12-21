@@ -68,6 +68,8 @@ ai-gym-trainer/
 ├── requirements.txt          # Python dependencies
 ```
 
+The following is the link for the dataset: https://drive.google.com/drive/folders/16ADf2laxyQDcVZcTqLFS5oHDC-XkXwlz?usp=drive_link
+
 ## Future Enhancements
 - Multi-language support.
 - Support for additional exercise types.
